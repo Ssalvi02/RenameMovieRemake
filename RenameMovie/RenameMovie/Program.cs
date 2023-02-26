@@ -4,10 +4,10 @@ using System;
 
 public static class DirExt
 {
-    public static void RenameDir()
+    static void Main(string[] args)
     {
         string[] dirs = Directory.GetDirectories(Directory.GetCurrentDirectory());
-        char[] numb = {'1', '2'};
+        char[] numb = { '1', '2' };
         foreach (string dir in dirs)
         {
             string old_name = dir;
@@ -15,16 +15,12 @@ public static class DirExt
             string space_name = old_name.Replace('.', ' ');
             //Remove do ano pra frente
             int pos = space_name.IndexOfAny(numb);
-            if (pos >= 0) 
+            if (pos >= 0)
             {
                 string new_name = space_name.Remove(pos);
                 Directory.Move(old_name, new_name);
             }
         }
-    }
-    static void Main(string[] args)
-    {
-        RenameDir();
     }
 }
 
